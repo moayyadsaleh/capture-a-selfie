@@ -1,57 +1,65 @@
+/* General Body Styling */
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #f8f9fa;
+  background-color: #f8f9fa; /* Light neutral background */
   text-align: center;
   margin: 0;
   padding: 0;
 }
 
+/* Container for the App */
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  padding: 20px;
 }
 
+/* App Title */
 h1 {
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 20px;
+  font-size: 2.5rem;
+  color: #333; /* Dark gray text */
+  margin-bottom: 30px;
+  font-weight: 600;
 }
 
+/* Video Element */
 video {
   width: 100%;
   max-width: 500px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; /* Rounded corners for video */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   margin-bottom: 20px;
 }
 
-/* Controls styling */
+/* Controls Styling */
 .controls {
   display: flex;
-  gap: 20px;
+  gap: 15px;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .control-btn {
-  background-color: #007bff;
+  background-color: #4a90e2; /* Soft blue for buttons */
   color: white;
   border: none;
-  border-radius: 50%;
+  border-radius: 50%; /* Fully rounded buttons */
   padding: 15px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
 .control-btn:hover {
-  background-color: #0056b3;
+  background-color: #357abd; /* Darker blue on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
 }
 
 .control-btn i {
@@ -69,21 +77,21 @@ video {
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 120px;
-  background-color: #333;
-  color: #fff;
+  background-color: #333; /* Gray background for tooltip */
+  color: #fff; /* White text */
   text-align: center;
-  border-radius: 6px;
+  border-radius: 6px; /* Rounded tooltip */
   padding: 5px 0;
   position: absolute;
   z-index: 1;
-  bottom: 125%; /* Position the tooltip above the button */
+  bottom: 125%; /* Position above button */
   left: 50%;
   margin-left: -60px;
   opacity: 0;
   transition: opacity 0.3s;
 }
 
-/* Show the tooltip when hovering over the button */
+/* Show tooltip on hover */
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
@@ -108,40 +116,93 @@ canvas,
   width: 100%;
   border-radius: 10px;
   margin-top: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
+/* Download Button */
 a,
 #retake {
   margin-top: 10px;
   display: inline-block;
-  background-color: #28a745;
+  background-color: #28a745; /* Green for download buttons */
   color: white;
   border: none;
   border-radius: 50%;
   padding: 15px;
   cursor: pointer;
   font-size: 20px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 a:hover,
 #retake:hover {
-  background-color: #218838;
+  background-color: #218838; /* Darker green on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
 }
 
-input[type="range"] {
-  width: 80%;
-  max-width: 500px;
+/* Timer styling for modern look */
+.timer {
   margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
+.timer label {
+  font-size: 1.2rem;
+  color: #333; /* Dark gray text */
+}
+
+.timer select {
+  padding: 12px 15px;
+  font-size: 1rem;
+  background-color: #4a90e2; /* Soft blue for dropdown background */
+  color: white;
+  border: none;
+  border-radius: 8px; /* Rounded corners for a modern feel */
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.timer select:hover {
+  background-color: #357abd; /* Darker blue on hover */
+}
+
+.timer select:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.6); /* Soft glow for focus */
+}
+
+/* Range input (zoom control) styling */
+input[type="range"] {
+  cursor: pointer;
+  appearance: none;
+  height: 8px;
+  background-color: #f0f0f0; /* Light gray for slider background */
+  outline: none;
+  transition: background-color 0.3s ease;
+  border-radius: 8px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background-color: #4a90e2; /* Soft blue for the slider thumb */
+  border-radius: 50%; /* Rounded thumb */
+  cursor: pointer;
+}
+
+/* Countdown Display */
 #countdownDisplay {
   font-size: 2rem;
-  color: red;
+  color: #d9534f; /* Red for countdown */
   margin: 20px;
 }
 
+/* Responsive adjustments */
 @media (max-width: 600px) {
   video {
     width: 100%;
@@ -155,37 +216,4 @@ input[type="range"] {
     padding: 10px;
     font-size: 16px;
   }
-}
-/* Timer styling */
-.timer {
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.timer label {
-  font-size: 1.2rem;
-  color: #333;
-}
-
-.timer select {
-  padding: 10px;
-  font-size: 1rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.timer select:hover {
-  background-color: #0056b3;
-}
-
-.timer select:focus {
-  outline: none;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.8);
 }
