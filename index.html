@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Selfie Capture App</title>
+    <title>Selfie Capture and Video Recording App</title>
     <!-- Font Awesome for icons -->
     <link
       rel="stylesheet"
@@ -13,21 +13,39 @@
   </head>
   <body>
     <div class="container">
-      <h1>Take a Selfie</h1>
+      <h1>Take a Selfie or Record a Video</h1>
 
       <video id="video" autoplay playsinline></video>
 
-      <!-- Use icons instead of text -->
+      <!-- Use icons instead of text with custom tooltips -->
       <div class="controls">
-        <button id="switchCamera" class="control-btn">
-          <i class="fas fa-sync-alt"></i>
-        </button>
-        <button id="snap" class="control-btn">
-          <i class="fas fa-camera"></i>
-        </button>
-        <button id="toggleCamera" class="control-btn">
-          <i class="fas fa-power-off"></i>
-        </button>
+        <div class="tooltip">
+          <button id="switchCamera" class="control-btn">
+            <i class="fas fa-sync-alt"></i>
+          </button>
+          <span class="tooltiptext">Switch Camera</span>
+        </div>
+
+        <div class="tooltip">
+          <button id="snap" class="control-btn">
+            <i class="fas fa-camera"></i>
+          </button>
+          <span class="tooltiptext">Capture Photo</span>
+        </div>
+
+        <div class="tooltip">
+          <button id="toggleCamera" class="control-btn">
+            <i class="fas fa-power-off"></i>
+          </button>
+          <span class="tooltiptext">Turn On/Off Camera</span>
+        </div>
+
+        <div class="tooltip">
+          <button id="recordVideo" class="control-btn">
+            <i class="fas fa-video"></i>
+          </button>
+          <span class="tooltiptext">Record Video</span>
+        </div>
       </div>
 
       <div id="countdownDisplay"></div>
@@ -44,9 +62,27 @@
         ><i class="fas fa-download"></i
       ></a>
 
+      <a
+        id="downloadVideo"
+        download="recording.webm"
+        style="display: none"
+        class="control-btn"
+        ><i class="fas fa-download"></i
+      ></a>
+
       <button id="retake" style="display: none" class="control-btn">
         <i class="fas fa-redo"></i>
       </button>
+
+      <!-- Timer selection -->
+      <div class="timer">
+        <label for="timerSelect">Set Timer: </label>
+        <select id="timerSelect">
+          <option value="3">3 seconds</option>
+          <option value="5">5 seconds</option>
+          <option value="10">10 seconds</option>
+        </select>
+      </div>
 
       <input
         type="range"
