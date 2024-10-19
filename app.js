@@ -5,10 +5,9 @@ const downloadLink = document.getElementById("download");
 const downloadVideoLink = document.getElementById("downloadVideo");
 const previewImage = document.getElementById("preview");
 const retakeButton = document.getElementById("retake");
-const zoomControl = document.getElementById("zoomControl");
 const countdownDisplay = document.getElementById("countdownDisplay");
 const toggleCameraButton = document.getElementById("toggleCamera");
-const recordVideoButton = document.getElementById("recordVideo");
+const recordVideoButton = document.getElementById("recordVideo"); // Video record button
 const timerSelect = document.getElementById("timerSelect");
 const context = canvas.getContext("2d");
 
@@ -19,28 +18,16 @@ let cameraActive = true;
 let mediaRecorder;
 let recordedChunks = [];
 
-// Initialize camera with video and audio
+// Initialize camera with video
 function initializeCamera() {
   navigator.mediaDevices
     .getUserMedia({
       video: { facingMode: useFrontCamera ? "user" : "environment" },
-      audio: true, // Request access to microphone for audio recording
+      audio: true, // Capture audio for video recording
     })
     .then((mediaStream) => {
       stream = mediaStream;
       video.srcObject = stream;
-
-      // Handle zoom capabilities if available
-      const track = stream.getVideoTracks()[0];
-      const capabilities = track.getCapabilities();
-      if (capabilities.zoom) {
-        zoomControl.min = capabilities.zoom.min;
-        zoomControl.max = capabilities.zoom.max;
-        zoomControl.step = capabilities.zoom.step;
-        zoomControl.addEventListener("input", () => {
-          track.applyConstraints({ advanced: [{ zoom: zoomControl.value }] });
-        });
-      }
 
       // Set camera as active
       cameraActive = true;
@@ -98,6 +85,7 @@ function capturePhoto() {
 
 // Countdown before taking the photo
 function startCountdown() {
+  // Get the selected countdown time from the dropdown
   countdown = parseInt(timerSelect.value);
   countdownDisplay.style.display = "block";
   countdownDisplay.textContent = countdown;
@@ -114,12 +102,6 @@ function startCountdown() {
     }
   }, 1000);
 }
-
-// Add grayscale filter
-document.getElementById("filterGrayscale").addEventListener("click", () => {
-  context.filter = "grayscale(100%)";
-  capturePhoto();
-});
 
 // Switch camera between front and rear
 document.getElementById("switchCamera").addEventListener("click", () => {
