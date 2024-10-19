@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selfie Capture App</title>
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Take a Selfie</h1>
+
+      <video id="video" autoplay playsinline></video>
+
+      <!-- Use icons instead of text -->
+      <div class="controls">
+        <button id="switchCamera" class="control-btn">
+          <i class="fas fa-sync-alt"></i>
+        </button>
+        <button id="snap" class="control-btn">
+          <i class="fas fa-camera"></i>
+        </button>
+        <button id="toggleCamera" class="control-btn">
+          <i class="fas fa-power-off"></i>
+        </button>
+      </div>
+
+      <div id="countdownDisplay"></div>
+
+      <canvas id="canvas" style="display: none"></canvas>
+
+      <img id="preview" alt="Selfie Preview" style="display: none" />
+
+      <a
+        id="download"
+        download="selfie.png"
+        style="display: none"
+        class="control-btn"
+        ><i class="fas fa-download"></i
+      ></a>
+
+      <button id="retake" style="display: none" class="control-btn">
+        <i class="fas fa-redo"></i>
+      </button>
+
+      <input
+        type="range"
+        id="zoomControl"
+        style="width: 300px"
+        min="1"
+        max="10"
+        step="0.1"
+      />
+
+      <button id="filterGrayscale" class="control-btn">
+        <i class="fas fa-adjust"></i>
+      </button>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,116 @@
+/* Basic styling */
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f8f9fa;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+video {
+  width: 100%;
+  max-width: 500px; /* Make the video larger */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Controls styling */
+.controls {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.control-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.control-btn:hover {
+  background-color: #0056b3;
+}
+
+.control-btn i {
+  font-size: 1.5rem;
+}
+
+/* Larger canvas for captured photo */
+canvas,
+#preview {
+  max-width: 500px; /* Make canvas larger */
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+a,
+#retake {
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.3s ease;
+}
+
+a:hover,
+#retake:hover {
+  background-color: #218838;
+}
+
+input[type="range"] {
+  width: 80%;
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+#countdownDisplay {
+  font-size: 2rem;
+  color: red;
+  margin: 20px;
+}
+
+@media (max-width: 600px) {
+  video {
+    width: 100%;
+  }
+
+  canvas {
+    width: 100%;
+  }
+
+  .control-btn {
+    padding: 10px;
+    font-size: 16px;
+  }
+}
