@@ -18,13 +18,19 @@ let cameraActive = true;
 let mediaRecorder;
 let recordedChunks = [];
 
-// Initialize camera with video
+// Initialize camera with the highest available resolution (4K if available)
 function initializeCamera() {
+  const constraints = {
+    video: {
+      width: { ideal: 3840 }, // Try to request 4K resolution
+      height: { ideal: 2160 },
+      facingMode: useFrontCamera ? "user" : "environment",
+    },
+    audio: true, // Capture audio for video recording
+  };
+
   navigator.mediaDevices
-    .getUserMedia({
-      video: { facingMode: useFrontCamera ? "user" : "environment" },
-      audio: true, // Capture audio for video recording
-    })
+    .getUserMedia(constraints)
     .then((mediaStream) => {
       stream = mediaStream;
       video.srcObject = stream;
@@ -35,6 +41,29 @@ function initializeCamera() {
     })
     .catch((err) => {
       console.error("Error accessing the camera or microphone: ", err);
+      fallbackToLowerResolution();
+    });
+}
+
+// Fallback to lower resolution if 4K is not available
+function fallbackToLowerResolution() {
+  const fallbackConstraints = {
+    video: {
+      width: { ideal: 1920 }, // Fallback to 1080p if 4K is not available
+      height: { ideal: 1080 },
+      facingMode: useFrontCamera ? "user" : "environment",
+    },
+    audio: true,
+  };
+
+  navigator.mediaDevices
+    .getUserMedia(fallbackConstraints)
+    .then((mediaStream) => {
+      stream = mediaStream;
+      video.srcObject = stream;
+    })
+    .catch((err) => {
+      console.error("Unable to access camera even with lower resolution", err);
     });
 }
 
@@ -70,7 +99,7 @@ function flashEffect() {
   }, 200);
 }
 
-// Capture photo
+// Capture photo with the highest resolution
 function capturePhoto() {
   canvas.width = video.videoWidth;
   canvas.height = video.videoHeight;
@@ -159,5 +188,5 @@ function stopRecording() {
   recordVideoButton.innerHTML = '<i class="fas fa-video"></i>'; // Change to video icon
 }
 
-// Initialize camera on load
+// Initialize camera on load with highest resolution
 initializeCamera();
