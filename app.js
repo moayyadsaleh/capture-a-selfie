@@ -10,6 +10,7 @@ const toggleCameraButton = document.getElementById("toggleCamera");
 const recordVideoButton = document.getElementById("recordVideo"); // Video record button
 const timerSelect = document.getElementById("timerSelect");
 const context = canvas.getContext("2d");
+const recordingTimer = document.getElementById("recordingTimer"); // Recording timer
 
 let useFrontCamera = true;
 let stream;
@@ -17,6 +18,8 @@ let countdown = 3;
 let cameraActive = true;
 let mediaRecorder;
 let recordedChunks = [];
+let recordingTime = 0;
+let recordingInterval;
 
 // Initialize camera with the highest available resolution (4K if available)
 function initializeCamera() {
@@ -114,7 +117,6 @@ function capturePhoto() {
 
 // Countdown before taking the photo
 function startCountdown() {
-  // Get the selected countdown time from the dropdown
   countdown = parseInt(timerSelect.value);
   countdownDisplay.style.display = "block";
   countdownDisplay.textContent = countdown;
@@ -152,14 +154,13 @@ snapButton.addEventListener("click", startCountdown);
 let isRecording = false;
 recordVideoButton.addEventListener("click", () => {
   if (!isRecording) {
-    // Start recording
     startRecording();
   } else {
-    // Stop recording
     stopRecording();
   }
 });
 
+// Start recording video and display timer
 function startRecording() {
   recordedChunks = [];
   mediaRecorder = new MediaRecorder(stream, { mimeType: "video/webm" });
@@ -180,12 +181,33 @@ function startRecording() {
   mediaRecorder.start();
   isRecording = true;
   recordVideoButton.innerHTML = '<i class="fas fa-stop"></i>'; // Change to stop icon
+
+  // Start the recording timer
+  recordingTime = 0;
+  recordingTimer.style.display = "block";
+  updateRecordingTimer();
+  recordingInterval = setInterval(updateRecordingTimer, 1000);
 }
 
+// Stop recording video and hide timer
 function stopRecording() {
   mediaRecorder.stop();
   isRecording = false;
   recordVideoButton.innerHTML = '<i class="fas fa-video"></i>'; // Change to video icon
+
+  // Stop the recording timer
+  clearInterval(recordingInterval);
+  recordingTimer.style.display = "none";
+}
+
+// Update the recording timer
+function updateRecordingTimer() {
+  recordingTime++;
+  const minutes = Math.floor(recordingTime / 60);
+  const seconds = recordingTime % 60;
+  recordingTimer.textContent = `${String(minutes).padStart(2, "0")}:${String(
+    seconds
+  ).padStart(2, "0")}`;
 }
 
 // Initialize camera on load with highest resolution

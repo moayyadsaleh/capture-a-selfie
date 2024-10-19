@@ -1,65 +1,57 @@
-/* General Body Styling */
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #f8f9fa; /* Light neutral background */
+  background-color: #f8f9fa;
   text-align: center;
   margin: 0;
   padding: 0;
 }
 
-/* Container for the App */
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  padding: 20px;
 }
 
-/* App Title */
 h1 {
-  font-size: 2.5rem;
-  color: #333; /* Dark gray text */
-  margin-bottom: 30px;
-  font-weight: 600;
-}
-
-/* Video Element */
-video {
-  width: 100%;
-  max-width: 500px;
-  border-radius: 10px; /* Rounded corners for video */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  font-size: 2rem;
+  color: #333;
   margin-bottom: 20px;
 }
 
-/* Controls Styling */
+video {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Controls styling */
 .controls {
   display: flex;
-  gap: 15px;
+  gap: 20px;
   justify-content: center;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .control-btn {
-  background-color: #4a90e2; /* Soft blue for buttons */
+  background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 50%; /* Fully rounded buttons */
+  border-radius: 50%;
   padding: 15px;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  transition: background-color 0.3s ease;
 }
 
 .control-btn:hover {
-  background-color: #357abd; /* Darker blue on hover */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+  background-color: #0056b3;
 }
 
 .control-btn i {
@@ -77,21 +69,21 @@ video {
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 120px;
-  background-color: #333; /* Gray background for tooltip */
-  color: #fff; /* White text */
+  background-color: #333;
+  color: #fff;
   text-align: center;
-  border-radius: 6px; /* Rounded tooltip */
+  border-radius: 6px;
   padding: 5px 0;
   position: absolute;
   z-index: 1;
-  bottom: 125%; /* Position above button */
+  bottom: 125%; /* Position the tooltip above the button */
   left: 50%;
   margin-left: -60px;
   opacity: 0;
   transition: opacity 0.3s;
 }
 
-/* Show tooltip on hover */
+/* Show the tooltip when hovering over the button */
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
@@ -116,73 +108,40 @@ canvas,
   width: 100%;
   border-radius: 10px;
   margin-top: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Download Button */
 a,
 #retake {
   margin-top: 10px;
   display: inline-block;
-  background-color: #28a745; /* Green for download buttons */
+  background-color: #28a745;
   color: white;
   border: none;
   border-radius: 50%;
   padding: 15px;
   cursor: pointer;
   font-size: 20px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 a:hover,
 #retake:hover {
-  background-color: #218838; /* Darker green on hover */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+  background-color: #218838;
 }
 
-/* Timer styling for modern look */
-.timer {
+input[type="range"] {
+  width: 80%;
+  max-width: 500px;
   margin-top: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
 }
 
-.timer label {
-  font-size: 1.2rem;
-  color: #333; /* Dark gray text */
-}
-
-.timer select {
-  padding: 12px 15px;
-  font-size: 1rem;
-  background-color: #4a90e2; /* Soft blue for dropdown background */
-  color: white;
-  border: none;
-  border-radius: 8px; /* Rounded corners for a modern feel */
-  cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-}
-
-.timer select:hover {
-  background-color: #357abd; /* Darker blue on hover */
-}
-
-.timer select:focus {
-  outline: none;
-  box-shadow: 0 0 10px rgba(74, 144, 226, 0.6); /* Soft glow for focus */
-}
-
-/* Countdown Display */
 #countdownDisplay {
   font-size: 2rem;
-  color: #d9534f; /* Red for countdown */
+  color: red;
   margin: 20px;
 }
 
-/* Responsive adjustments */
 @media (max-width: 600px) {
   video {
     width: 100%;
@@ -196,4 +155,37 @@ a:hover,
     padding: 10px;
     font-size: 16px;
   }
+}
+/* Timer styling */
+.timer {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.timer label {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.timer select {
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.timer select:hover {
+  background-color: #0056b3;
+}
+
+.timer select:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.8);
 }
