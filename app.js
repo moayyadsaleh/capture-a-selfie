@@ -20,6 +20,7 @@ let mediaRecorder;
 let recordedChunks = [];
 let recordingTime = 0;
 let recordingInterval;
+video.muted = true;
 
 // Initialize camera with the highest available resolution (4K if available)
 function initializeCamera() {
@@ -40,7 +41,7 @@ function initializeCamera() {
 
       // Set camera as active
       cameraActive = true;
-      toggleCameraButton.textContent = "Turn Off Camera"; // Update button text
+      toggleCameraButton.textContent = "Turn Off"; // Update button text
     })
     .catch((err) => {
       console.error("Error accessing the camera or microphone: ", err);
@@ -76,7 +77,7 @@ function turnOffCamera() {
   tracks.forEach((track) => track.stop());
   video.srcObject = null;
   cameraActive = false; // Set camera as inactive
-  toggleCameraButton.textContent = "Turn On Camera"; // Update button text
+  toggleCameraButton.textContent = "Turn On"; // Update button text
 }
 
 // Toggle camera on/off based on current state
